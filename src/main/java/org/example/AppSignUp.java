@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 
 
@@ -14,6 +18,7 @@ public class AppSignUp {
         AppSignUp app = new AppSignUp();
         app.openBrowser();
         app.signupTest();
+        app.loginTest();
         app.closeBrowser();
     }
 
@@ -28,7 +33,7 @@ public class AppSignUp {
         Thread.sleep(5000);  
         // driver.quit(); 
     }
-
+    @Test 
     public void signupTest() {
         WebElement username = driver.findElement(By.id("us_username"));
         username.sendKeys("tlinh123456789");
@@ -60,7 +65,18 @@ public class AppSignUp {
         }
         WebElement register = driver.findElement(By.name("commit"));
         register.submit();
-        
+        WebElement closeAd = driver.findElement(By.xpath("//*[@id=\"toPopup\"]/div[1]"));
+        closeAd.click();
+        WebElement cont = driver.findElement(By.name("commit"));
+        cont.submit();
+    }
+    public void loginTest() {
+        WebElement pass = driver.findElement(By.id("password"));
+        pass.sendKeys("abc123123");
+        WebElement login = driver.findElement(By.name("commit"));
+        login.submit();
+        WebElement cont = driver.findElement(By.name("commit"));
+        cont.submit();
     }
 
     public void closeBrowser() {

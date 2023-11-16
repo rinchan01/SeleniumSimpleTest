@@ -14,7 +14,7 @@ public class AppSignIn {
         AppSignIn app = new AppSignIn();
         app.openBrowser();
         app.signinTest();
-        app.closeBrowser();
+        
     }
 
     public void openBrowser() throws Exception {
